@@ -1,0 +1,10 @@
+<aura:component controller="NewsCallouts">
+    <aura:attribute name="articles" type="Object" />
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:handler name="doInit" value="{!this}" action="{!c.loadArticles}"/>
+
+    <lightning:card>
+        <lightning:datatable data="{! v.articles }" columns="{!v.columns }" keyField="Id" hideCheckboxColumn="true"/>
+    </lightning:card>
+</aura:component>	
