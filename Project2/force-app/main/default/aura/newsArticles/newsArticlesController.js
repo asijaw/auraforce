@@ -1,16 +1,13 @@
 ({
-    doInit : function(component, event, helper) {
-        component.set("v.columns", [
-            {fieldName:"articles.Title", type:"Text"},
-            
-        ]);
+    loadArticles : function(component, event, helper) {
 
-        let action = component.get("c.getTopHeadlines"); 
+        let action = component.get("c.getCrypto"); 
         
         action.setCallback(this, function(data) {
             component.set("v.articles", data.getReturnValue());
         });
         $A.enqueueAction(action);
-     
+      
     }
+
 })

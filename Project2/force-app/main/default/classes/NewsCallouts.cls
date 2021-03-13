@@ -1,7 +1,7 @@
 public with sharing class NewsCallouts {
 
     //returns articles based on the url received
-    public static Map<String,Object> callouts(String url){
+    public static List<Object> callouts(String url){
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint(url);
@@ -15,54 +15,37 @@ public with sharing class NewsCallouts {
             
             List<Object> articles = (List<Object>) results.get('articles');
             Map<String, Object> article = new Map<String, Object>();
-            Map<String, Object> articleMap = new Map<String, Object>();
             
-            for (Integer i = 0; i < 20 ; i++){
-                article = (Map<String, Object>)articles.get(i);
+            // for(List<Object> x : articles) {
+            //     System.debug((Map<String, Object>)articles.get('author'));
+            // }
 
-                String title = (String)article.get('title');
-                String author = (String)article.get('author');
-                String description = (String)article.get('description');
-                String articleUrl = (String)article.get('url');
-                String publishedDate = (String)article.get('publishedAt');
-                
-
-                articleMap.put('title', title);
-                articleMap.put('author', author);
-                articleMap.put('description', description);
-                articleMap.put('articleUrl', articleUrl);
-                articleMap.put('publishedDate', publishedDate);
-
-                //System.debug(articleMap.get('title'));
-           }
+            return articles;
             
-            return articleMap;
         }
         return null;
     }
-    
     @AuraEnabled
-    public static Map<String,Object> getTopHeadlines() {
-        String topHeadlinesUrl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=925e099242a34913991b9efd7cb6adf9';
-        return callouts(topHeadlinesUrl);
-    } 
-
-    @AuraEnabled
-    public static Map<String,Object> getCrypto() {
-        String topHeadlinesUrl = 'https://newsapi.org/v2/everything?q=crypto&apiKey=925e099242a34913991b9efd7cb6adf9';
+    public static List<Object> getTech(){
+        String topHeadlinesUrl = 'https://newsapi.org/v2/top-headlines?q=tech&apiKey=925e099242a34913991b9efd7cb6adf9';
         return callouts(topHeadlinesUrl);
     }
 
     @AuraEnabled
-    public static Map<String,Object> getProgramming() {
-        String topHeadlinesUrl = 'https://newsapi.org/v2/everything?q=programming&apiKey=925e099242a34913991b9efd7cb6adf9';
-        return callouts(topHeadlinesUrl);
+    public static List<Object> getCrypto(){
+        String cryptoUrl = 'https://newsapi.org/v2/everything?q=crypto&apiKey=925e099242a34913991b9efd7cb6adf9';
+        return callouts(cryptoUrl);
     }
 
     @AuraEnabled
-    public static Map<String,Object> getSalesforce() {
-        String topHeadlinesUrl = 'https://newsapi.org/v2/everything?q=salesforce&apiKey=925e099242a34913991b9efd7cb6adf9';
-        return callouts(topHeadlinesUrl);
+    public static List<Object> getProgramming(){
+        String programmingUrl = 'https://newsapi.org/v2/everything?q=programming&apiKey=925e099242a34913991b9efd7cb6adf9';
+        return callouts(programmingUrl);
     }
     
+    @AuraEnabled
+    public static List<Object> getSalesforce(){
+        String salesforceUrl = 'https://newsapi.org/v2/everything?q=salesforce&apiKey=925e099242a34913991b9efd7cb6adf9';
+        return callouts(salesforceUrl);
+    }
 }

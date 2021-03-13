@@ -1,0 +1,28 @@
+<aura:component controller="NewsCallouts" implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="tech" type="Object[]"/>
+    <aura:attribute name="programmming" type="Object[]"/>
+    <aura:attribute name="salesforce" type="Object[]"/>
+    <aura:attribute name="crypto" type="Object[]"/>
+    <aura:attribute name="articlesToDisplay" type="String"/>
+    <aura:attribute name="options" type="List"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    
+
+    <lightning:tabset selectedTabId="tech">
+        <lightning:tab label="Tech News">
+                <c:newsArticles  articles="{!v.tech}"/>
+        </lightning:tab>
+        <lightning:tab label="Crypto News">
+                <c:newsArticles  articles="{!v.crypto}"/>
+        </lightning:tab>
+        <lightning:tab label="Programming News">
+                <c:newsArticles  articles="{!v.programming}"/>
+        </lightning:tab>
+        <lightning:tab label="Salesforce">
+                <c:newsArticles  articles="{!v.salesforce}"/>
+        </lightning:tab>
+    </lightning:tabset>
+
+</aura:component>	
