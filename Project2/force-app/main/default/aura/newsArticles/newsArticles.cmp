@@ -10,16 +10,23 @@
                 <div class="slds-card slds-var-p-top_medium">
 
                     <header class="slds-card__header">
-                        <h1 class="slds-text-heading_large">{!article.title}</h1>
-
+                        <lightning:navigation aura:id="navService" />
+                        
+                            <h1 class="slds-text-heading_large" >
+                                <a href="{!article.url}">
+                                    {!article.title}
+                                </a>
+                            </h1>
+                        
                         <aura:if isTrue="{!article.author != null}">
                             <p class="slds-text-heading_medium">{!article.author}</p>
                         </aura:if>
                         <aura:if isTrue="{!article.description != null}">
                             <p class="slds-text-heading_small"> "{!article.description}"</p>
                         </aura:if>
-                    </header>  
-                   
+                        <lightning:button label="Favorite!" onclick="{!c.favorite}" />
+                    </header>
+
                 </div>
             </aura:iteration>
         </lightning:card>

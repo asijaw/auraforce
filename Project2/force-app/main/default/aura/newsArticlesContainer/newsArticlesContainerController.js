@@ -4,9 +4,10 @@
         let articlesTech = component.get("c.getTech");
         let articlesProgramming = component.get("c.getProgramming");
         let articlesSalesforce = component.get("c.getSalesforce");
+        let favArticles = component.get("c.getMyArticles")
 
         articlesCrypto.setCallback(this, function(data) {
-            component.set("v.crpto", data.getReturnValue());
+            component.set("v.crypto", data.getReturnValue());
         });
         articlesTech.setCallback(this, function(data) {
             component.set("v.tech", data.getReturnValue());
@@ -17,6 +18,9 @@
         articlesSalesforce.setCallback(this, function(data) {
             component.set("v.salesforce", data.getReturnValue());
         });
+        favArticles.setCallback(this, function(data){
+            component.set("v.favorites", data.getReturnValue());
+        })
 
         $A.enqueueAction(articlesCrypto);
         $A.enqueueAction(articlesTech);

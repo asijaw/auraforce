@@ -48,4 +48,16 @@ public with sharing class NewsCallouts {
         String salesforceUrl = 'https://newsapi.org/v2/everything?q=salesforce&apiKey=925e099242a34913991b9efd7cb6adf9';
         return callouts(salesforceUrl);
     }
+    @AuraEnabled
+    public static List<Article__c> getMyArticles(){
+        //User currentUser = [SELECT Id, ContactId FROM User WHERE Id=:UserInfo.getUserId()]
+        User currentUser = [SELECT Id FROM User WHERE Id='0055Y00000ECcjOQAT'];
+        List<Article__c> articles = [SELECT Id, Title__c, Author__c, Description__c, Content__c FROM Article__c];
+        return articles;
+    }
+    @AuraEnabled
+    public static Article__c saveItem(Article__c article){
+        upsert article;
+        return article;
+    }
 }
