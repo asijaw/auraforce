@@ -11,10 +11,8 @@
     },
     openModel: function(component, event, helper) {
         // for Display Model,set the "isOpen" attribute to "true"
-        let site = component.find("value")
-        
-        //component.set("v.isOpen", true);
-        window.open(site, "MsgWindow", "width=200,height=100")
+        event.preventDefault();
+        component.set("v.isOpen", true);
     },
    
     closeModel: function(component, event, helper) {
