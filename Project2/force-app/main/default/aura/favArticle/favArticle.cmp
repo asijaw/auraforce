@@ -1,0 +1,61 @@
+<aura:component controller="NewsCallouts">
+    <aura:attribute name="favArticle" type="Object"/>
+    <aura:attribute name="newArticle" type="Object"/>
+    <aura:attribute name="isOpen" type="boolean" default="false" />
+
+    <aura:handler name="init" value="{!v.favArticle}" action="{!c.loadArticle}" /> 
+
+    <div class="slds-card slds-var-p-top_medium">
+
+        <header class="slds-card__header">
+            <lightning:navigation aura:id="navService" />
+            
+                <h1 class="slds-text-heading_large" onclick="{! c.openModel}">
+                    <a href="{!v.favArticle.url}">
+                        {!v.favArticle.title}
+                    </a>
+                </h1>
+            
+            <aura:if isTrue="{!v.favArticle.author != null}">
+                <p class="slds-text-heading_medium">{!v.favArticle.author}</p>
+            </aura:if>
+            <aura:if isTrue="{!v.favArticle.description != null}">
+                <p class="slds-text-heading_small"> "{!v.favArticle.description}"</p>
+            </aura:if>
+            <button class="slds-button slds-button_inverse" disabled="false" label="Favorite!" value="{!v.favArticle}" onclick="{!c.favorite}">Favorite!</button>
+            <!-- <aura:if isTrue="{!v.isFav}">
+                <c:favArticle favArticle="{!article}"/>
+            </aura:if> -->
+        </header>
+
+        <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
+                            alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Caution!</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                        <p><b>You are about to be redirected.</b></p>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <a href="{!v.favArticle.url}">
+                            <lightning:button variant="brand" label="Okay" title="Okay"/>
+                        </a>
+                        <lightning:button variant="neutral" label="Cancel" title="Cancel"
+                            onclick="{! c.closeModel }" />
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+
+        </aura:if>
+
+    </div>
+</aura:component> 

@@ -26,38 +26,39 @@ public with sharing class NewsCallouts {
         return null;
     }
     @AuraEnabled
-    public static List<Object> getTech(){
-        String topHeadlinesUrl = 'https://newsapi.org/v2/top-headlines?q=tech&apiKey=925e099242a34913991b9efd7cb6adf9';
+    public static List<Object> getApple(){
+        String topHeadlinesUrl = 'https://newsapi.org/v2/everything?q=apple&apiKey=9cb721f30c7a45e48bc180e9cea91723';
         return callouts(topHeadlinesUrl);
     }
 
     @AuraEnabled
     public static List<Object> getCrypto(){
-        String cryptoUrl = 'https://newsapi.org/v2/everything?q=crypto&apiKey=925e099242a34913991b9efd7cb6adf9';
+        String cryptoUrl = 'https://newsapi.org/v2/everything?q=crypto&apiKey=9cb721f30c7a45e48bc180e9cea91723';
         return callouts(cryptoUrl);
     }
 
     @AuraEnabled
     public static List<Object> getProgramming(){
-        String programmingUrl = 'https://newsapi.org/v2/everything?q=programming&apiKey=925e099242a34913991b9efd7cb6adf9';
+        String programmingUrl = 'https://newsapi.org/v2/everything?q=programming&apiKey=9cb721f30c7a45e48bc180e9cea91723';
         return callouts(programmingUrl);
     }
     
     @AuraEnabled
     public static List<Object> getSalesforce(){
-        String salesforceUrl = 'https://newsapi.org/v2/everything?q=salesforce&apiKey=925e099242a34913991b9efd7cb6adf9';
+        String salesforceUrl = 'https://newsapi.org/v2/everything?q=salesforce&apiKey=9cb721f30c7a45e48bc180e9cea91723';
         return callouts(salesforceUrl);
     }
     @AuraEnabled
-    public static List<Article__c> getMyArticles(){
+    public static List<Object> getMyArticles(){
         //User currentUser = [SELECT Id, ContactId FROM User WHERE Id=:UserInfo.getUserId()]
-        User currentUser = [SELECT Id FROM User WHERE Id='0055Y00000ECcjOQAT'];
-        List<Article__c> articles = [SELECT Id, Title__c, Author__c, Description__c, Content__c FROM Article__c];
-        return articles;
+        //User currentUser = [SELECT Id FROM User WHERE Id='0055Y00000ECcjOQAT'];
+        List<Article__c> articles = [SELECT Id, Title__c, Author__c, Description__c, Content__c, Article_Link__c FROM Article__c];
+        List<Object> v1 = (List<Object>) articles;
+        return v1;
     }
     @AuraEnabled
-    public static Article__c saveItem(Article__c article){
-        upsert article;
+    public static Object saveItem(Object article){
+        upsert (Article__c) article;
         return article;
     }
 }

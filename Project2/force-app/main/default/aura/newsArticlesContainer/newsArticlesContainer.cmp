@@ -3,12 +3,12 @@
     <aura:attribute name="programming" type="Object[]" />
     <aura:attribute name="salesforce" type="Object[]" />
     <aura:attribute name="crypto" type="Object[]" />
-    <aura:attribute name="favorites" type="Article__c[]" />
+    <aura:attribute name="favorites" type="Object[]" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
     <lightning:tabset selectedTabId="Tech News">
-        <lightning:tab label="Tech News" id="Tech News">
+        <lightning:tab label="Apple News" id="Tech News">
             <c:newsArticles articles="{!v.tech}" />
         </lightning:tab>
         <lightning:tab label="Crypto News">
@@ -17,11 +17,11 @@
         <lightning:tab label="Programming News">
             <c:newsArticles articles="{!v.programming}" />
         </lightning:tab>
-        <lightning:tab label="Salesforce">
+        <lightning:tab label="Salesforce News">
             <c:newsArticles articles="{!v.salesforce}" />
         </lightning:tab>
         <lightning:tab label="Saved Articles">
-            <c:newsArticles articles="{!v.favorites}" />
+            <c:savedArticles favArticles="{!v.favorites}" />
         </lightning:tab>
     </lightning:tabset>
 
