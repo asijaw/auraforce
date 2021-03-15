@@ -6,6 +6,7 @@
     <aura:attribute name="favorites" type="Object[]" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="savedArticleEvent" event="c:savedArticleEvent" action="{!c.handleRefresh}"/>
 
     <lightning:tabset selectedTabId="Tech News">
         <lightning:tab label="Apple News" id="Tech News">

@@ -11,8 +11,8 @@
                     <div class="slds-card slds-var-p-top_medium">
 
                         <header class="slds-card__header">
+                            
                             <lightning:navigation aura:id="navService" />
-
                             <h1 class="slds-text-heading_large" onclick="{! c.openModel}">
                                 <a href="{!favArticle.Article_Link__c}">
                                     {!favArticle.Title__c}

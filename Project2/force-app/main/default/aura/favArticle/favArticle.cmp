@@ -1,15 +1,18 @@
 <aura:component controller="NewsCallouts">
     <aura:attribute name="favArticle" type="Object"/>
-    <aura:attribute name="newArticle" type="Object"/>
+    <aura:attribute name="newArticles" type="Object"/>
     <aura:attribute name="isOpen" type="boolean" default="false" />
-
+    
     <aura:handler name="init" value="{!v.favArticle}" action="{!c.loadArticle}" /> 
+    <aura:registerEvent name="savedArticleEvent" type="c:savedArticleEvent"/>
 
     <div class="slds-card slds-var-p-top_medium">
 
         <header class="slds-card__header">
+            <!-- <aura:if isTrue="{!v.favArticle.urlToImage != null}">
+                <img src="{!v.favArticle.urlToImage}"/>
+            </aura:if> -->
             <lightning:navigation aura:id="navService" />
-            
                 <h1 class="slds-text-heading_large" onclick="{! c.openModel}">
                     <a href="{!v.favArticle.url}">
                         {!v.favArticle.title}
@@ -22,10 +25,8 @@
             <aura:if isTrue="{!v.favArticle.description != null}">
                 <p class="slds-text-heading_small"> "{!v.favArticle.description}"</p>
             </aura:if>
+            
             <button class="slds-button slds-button_inverse" disabled="false" label="Favorite!" value="{!v.favArticle}" onclick="{!c.favorite}">Favorite!</button>
-            <!-- <aura:if isTrue="{!v.isFav}">
-                <c:favArticle favArticle="{!article}"/>
-            </aura:if> -->
         </header>
 
         <aura:if isTrue="{!v.isOpen}">

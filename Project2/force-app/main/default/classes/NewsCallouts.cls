@@ -57,8 +57,15 @@ public with sharing class NewsCallouts {
         return v1;
     }
     @AuraEnabled
-    public static Object saveItem(Object article){
-        upsert (Article__c) article;
-        return article;
+    public static Article__c saveItem(Map<Object,Object> article){
+        Article__c newArticle = new Article__c();
+        newArticle.name = (String) article.get('Name');
+        newArticle.title__c = (String) article.get('Title__c');
+        newArticle.author__c = (String) article.get('Author__c');
+        newArticle.description__c = (String) article.get('Description__c');
+        newArticle.article_link__c = (String) article.get('Article_Link__c');
+        upsert newArticle;
+        
+        return newArticle;
     }
 }
