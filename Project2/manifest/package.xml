@@ -72,6 +72,22 @@
         <members>*</members>
         <name>ApprovalProcess</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>RemoteSiteSetting</name>
+    </types> 
+    <types>
+        <members>*</members>
+        <name>PathSetting</name>
+    </types> 
+    <types>
+        <members>*</members>
+        <name>SalesProcess</name>
+    </types> 
+    <types>
+        <members>*</members>
+        <name>CaseAssignment</name>
+    </types>           
     <!--<types>
         <members>Security</members>
         <name>Settings</name>
