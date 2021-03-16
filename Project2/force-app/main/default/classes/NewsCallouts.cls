@@ -16,10 +16,6 @@ public with sharing class NewsCallouts {
             List<Object> articles = (List<Object>) results.get('articles');
             Map<String, Object> article = new Map<String, Object>();
             
-            // for(List<Object> x : articles) {
-            //     System.debug((Map<String, Object>)articles.get('author'));
-            // }
-
             return articles;
             
         }

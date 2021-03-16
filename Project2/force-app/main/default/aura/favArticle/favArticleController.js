@@ -14,15 +14,11 @@
        
         action.setCallback(this, function (a) {
             var state = a.getState();
-            //console.log("state", state)
-            //console.log("a error", a.getError())
+        
             if (state === "SUCCESS") {
-                //component.getSource().set("v.disabled",true)
                 let savedArticleEvent = component.getEvent("savedArticleEvent")
                 savedArticleEvent.fire()
-                //component.set("v.newArticles", refresh.getReturnValue())
                 var artcl = a.getReturnValue();
-                //console.log(artcl)
             }
         });
         $A.enqueueAction(action)

@@ -35,24 +35,12 @@
         $A.enqueueAction(favArticles);
         
     }, 
-
-    handleSavedArticles: function(component, event, helper){
-        
-    },
-
     
-
     handleRefresh : function(component, event, helper){
-        //console.log('here')
         let favArticles = component.get("c.getMyArticles");
         favArticles.setCallback(this, function(data){
-            //console.log("refresh", data.getReturnValue())
             component.set("v.favorites", data.getReturnValue());
-            
         });
         $A.enqueueAction(favArticles);
     }
-
-
-    
 })
