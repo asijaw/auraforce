@@ -36,13 +36,13 @@
                                     <header class="slds-modal__header">
                                         <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeModel }"
                                             alternativeText="close" variant="bare-inverse" class="slds-modal__close" />
-                                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="color:black;">
                                             Caution!
                                         </h2>
                                     </header>
                                     <!--###### MODAL BOX BODY Part Start######-->
                                     <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
-                                        <p><b>You are about to be redirected.</b></p>
+                                        <p style="color:black;"><b>You are about to be redirected.</b></p>
                                     </div>
                                     <!--###### MODAL BOX FOOTER Part Start ######-->
                                     <footer class="slds-modal__footer">
